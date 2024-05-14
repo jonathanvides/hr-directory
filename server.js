@@ -51,7 +51,7 @@ app.put('/api/employees/:id', async (req, res, next) => {
     try {
         const SQL = `
             UPDATE employees
-            SET name = $1, category_id = $2, updated_at = now()
+            SET name = $1, department_id = $2, updated_at = now()
             WHERE id = $3 RETURNING *;
         `
         const result = await client.query(SQL, [req.body.name, req.body.department_id, req.params.id])
